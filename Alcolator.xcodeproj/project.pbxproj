@@ -163,6 +163,7 @@
 		47E7D2FC1A7E5EE20023DD10 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = BLC;
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = Bloc;
 				TargetAttributes = {
@@ -412,6 +413,7 @@
 				47E7D3291A7E5EE40023DD10 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		47E7D32A1A7E5EE40023DD10 /* Build configuration list for PBXNativeTarget "AlcolatorTests" */ = {
 			isa = XCConfigurationList;
@@ -420,6 +422,7 @@
 				47E7D32C1A7E5EE40023DD10 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
