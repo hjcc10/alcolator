@@ -7,6 +7,11 @@
 //
 
 #import "AppDelegate.h"
+//
+// HC 2.
+//
+#import "ViewController.h"
+//
 
 @interface AppDelegate ()
 
@@ -17,6 +22,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    //
+    // HC 2.
+    //
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] ;
+    // Override point for customization after application launch.
+    ViewController *viewController = [[ViewController alloc] init];
+    self.window.rootViewController = viewController;
+    [self.window makeKeyAndVisible];
     return YES;
 }
 
