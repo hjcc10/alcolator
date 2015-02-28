@@ -59,6 +59,9 @@
         
     // Gets rid of the maximum number of lines on the label
     self.resultLabel.numberOfLines = 0;
+    
+    // Shows the title view text with the right item ------ HC
+    self.title = NSLocalizedString(@"Wine", @"wine");
 }
 
 - (void)didReceiveMemoryWarning {
@@ -122,6 +125,10 @@
     
     NSString *resultText = [NSString stringWithFormat:NSLocalizedString(@"%d %@ contains as much alcohol as %.1f %@ of wine.", nil), numberOfBeers, beerText, numberOfWineGlassesForEquivalentAlcoholAmount, wineText];
     self.resultLabel.text = resultText;
+    
+    // ----------------------------------------------------- HC
+    NSString *titleComplete = [NSString stringWithFormat:NSLocalizedString(@"Wine (%.1f glasses)", @"wine"), numberOfWineGlassesForEquivalentAlcoholAmount];
+    self.title = titleComplete;
     
     //
     
@@ -227,11 +234,12 @@
     CGSize sizeView = self.view.bounds.size;
     CGFloat viewWidth = sizeView.width;
     CGFloat viewHeight = sizeView.height;
+    CGFloat paddingTop = 60;
     CGFloat padding = 20;
     CGFloat itemWidth = viewWidth - padding - padding;
     CGFloat itemHeight = 44;
     
-    self.beerPercentTextField.frame = CGRectMake(padding, padding, itemWidth, itemHeight);
+    self.beerPercentTextField.frame = CGRectMake(padding, paddingTop, itemWidth, itemHeight);
     self.beerPercentTextField.backgroundColor = [UIColor whiteColor];
     self.beerPercentTextField.textColor = [UIColor blueColor];
     self.beerPercentTextField.font = [UIFont boldSystemFontOfSize:20];
