@@ -10,12 +10,21 @@
 //
 // HC 2.
 //
-#import "ViewController.h"
+// #import "ViewController.h"
 
-#import "MainMenuViewController.h"
+// #import "MainMenuViewController.h" -------- HC 3
+//
+// HC 3
+//
+#import "ViewController.h"
+#import "WhiskeyViewController.h"
 //
 
-@interface AppDelegate ()
+//
+// ------------------------------------------------------ HC 3
+// It declares that it conforms to protocol the UITabBarControllerDelegate
+//
+@interface AppDelegate () <UITabBarControllerDelegate>
 
 @end
 
@@ -27,7 +36,7 @@
     //
     // HC 2.
     //
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] ;
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     // Override point for customization after application launch.
     
@@ -36,13 +45,36 @@
     // [self.window makeKeyAndVisible];
     // return YES;
     
-
-    MainMenuViewController *mainMenuViewController =[[MainMenuViewController alloc] init];
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:mainMenuViewController];
-    self.window.rootViewController = navigationController;
+    //
+    // HC 3
+    //
+    // MainMenuViewController *mainMenuViewController =[[MainMenuViewController alloc] init];
+    // UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:mainMenuViewController];
+    // self.window.rootViewController = navigationController;
+    
+    ViewController *wineVC = [[ViewController alloc] init];
+    WhiskeyViewController *whiskeyVC = [[WhiskeyViewController alloc] init];
+    UITabBarController *tabBarVC = [[UITabBarController alloc] init];
+    tabBarVC.viewControllers = @[wineVC, whiskeyVC];
+    
+    self.window.rootViewController = tabBarVC;
+    tabBarVC.delegate = self;
+    
+    //
+    
     [self.window makeKeyAndVisible];
     return YES;
 }
+
+//
+// ----------------------------------------------------- HC 3
+//
+- (void)tabBarController:(UITabBarController *)tabBarVC
+ didSelectViewController:(UIViewController *)rootViewController {
+    NSLog(@"New view controller selected %@.", rootViewController.title);
+}
+// ---------------------------------------------------------
+
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

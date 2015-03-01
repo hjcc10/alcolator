@@ -22,6 +22,23 @@
 
 @implementation ViewController
 
+//
+// ----------------------------------- HC 3
+//
+- (instancetype) init {
+    self = [super init];
+    
+    if (self) {
+        self.title = NSLocalizedString(@"Wine", @"wine");
+        
+        // Since we don't have icons, let's move the title to the middle of the tab bar
+        [self.tabBarItem setTitlePositionAdjustment:UIOffsetMake(0, -18)];
+    }
+    
+    return self;
+}
+// ----------------------------------------
+
 - (void)viewDidLoad {
     // [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
@@ -61,7 +78,8 @@
     self.resultLabel.numberOfLines = 0;
     
     // Shows the title view text with the right item ------ HC
-    self.title = NSLocalizedString(@"Wine", @"wine");
+    // self.title = NSLocalizedString(@"Wine", @"wine"); ------- HC 3
+    self.view.backgroundColor = [UIColor colorWithRed:0.741 green:0.925 blue:0.714 alpha:1]; /*#bdecb6*/
 }
 
 - (void)didReceiveMemoryWarning {
@@ -83,7 +101,10 @@
 - (void)sliderValueDidChange:(UISlider *)sender {
     NSLog(@"Slider value changed to %f", sender.value);
     [self.beerPercentTextField resignFirstResponder];
-    
+    //
+    // ---------------------------------------------------- HC 3
+    //
+    [self.tabBarItem setBadgeValue:[NSString stringWithFormat:@"%d", (int) sender.value]];
     //
     
     // first, calculate how much alcohol is in all those beers...
